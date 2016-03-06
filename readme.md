@@ -6,7 +6,7 @@ Jeu Java TL — TowerDefence
 Groupe :
 --------
 
--   Sebastien Vignal - To Complete
+-   Sebastien Vignal - tontonseb
 
 -   Felix Ancel - fefefy
 
@@ -21,11 +21,11 @@ Projet :
 git viewsource --ongithubhttps://github.com/TelecomLille-INFO/fa18-projet3.git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ce projet prend par dans notre module de projet java du groupe Info.
+Ce projet prend part dans notre module de projet java du groupe Info.
 
 Nous avons choisi de partir sur un jeu simple mais efficace, le Tower Defense.
 
-Le but du jeux est de placer des tours ayant des specs différentes afin
+Le but du jeu est de placer des tours ayant des specs différentes afin
 d’empêcher les vagues d’ennemis de parvenir à la fin du chemin qui leur est
 imposé par la route définie sur l’écran. Ce type de jeu est simple à comprendre,
 à prendre en main et est très additif si il est bien rodé.
@@ -38,7 +38,7 @@ Le développement :
 Ce Projet sera entièrement codé en java et mis en ligne sur gitHub pour le suivi
 du projet et l’historique des modifications.
 
-Il sera développé sous intelliJ 15 CE de la société JetBrains. Cette IDE est
+Il sera développé avec intelliJ 15 CE de la société JetBrains. Cette IDE est
 gratuit (Community edition) et cross platform.
 
 Felix et Sebastion développeront sous Windows et Yonni sous Mac OSX.
@@ -52,7 +52,7 @@ Tuto — télécharger et compiler le projet :
 
 Il vous faudra sur votre ordinateur un moyen d’utiliser github (ligne de
 commande de préférence) donc sous console pour Unix like et l’application gitHub
-sous windows avec le git Bash afin de pouvoir correctement suivre le auto.
+sous windows avec le git Bash afin de pouvoir correctement suivre le tuto.
 
 Veillez aussi à avoir le JDK version 1.8 afin d’être sur la même configuration
 que nous. (Rendez-vous [ici](<http://www.java.com/fr/download/>) si vous ne
@@ -81,19 +81,18 @@ Vous pouvez donner l’ensemble des droits sur votre compte sur ce token mais
 attention de ne pas le partager par mégarde, les tokens permettent des accès
 contrôlés à votre compte sans le mot de passe donc faîtes y attention.
 
-une fois le token généré vous revenais sur la page d’avant, copier le code
-afficher à l’écran en vert
+une fois le token généré vous revenez sur la page d’avant, copiez le code
+affiché à l’écran en vert
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git14.png>)
 
- 
 
-Rendez vous ensuite dans les préférence d’intelliJ dans l’onglet VCS \> GitHub
-et choisissez accès par token et copier le code précédemment copié.
+Rendez vous ensuite dans les préférences d’intelliJ dans l’onglet VCS \> GitHub
+et choisissez accès par token et collez le code précédemment copié.
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-git15.png>)
 
-testez le et enregistrez les options, vous êtes maintenant authentifié sur
+Testez le et enregistrez les options, vous êtes maintenant authentifié sur
 gitHub par IntelliJ ce qui permettra de commit plus simplement par la suite.
 
  
@@ -104,7 +103,7 @@ gitHub par IntelliJ ce qui permettra de commit plus simplement par la suite.
 
 Nous allons cloner le projet distant depuis le repo fa18-projet3 sur github.
 
-lancez votre console ou git Bash (les commandes seront les mêmes quelque soit la
+Lancez votre console ou git Bash (les commandes seront les mêmes quelque soit la
 plateforme)
 
  
@@ -151,13 +150,13 @@ A l’apparition de cette fenêtre cliquez sur « ok ».
 
  
 
-Des messages d’alerte devraient s’afficher pour Maven cliquez sur Disable, nous
-utilisons graille pour ce projet, et pour le premier message direction « Add
+Des messages d’alerte devraient s’afficher. Pour Maven cliquez sur Disable, nous
+utilisons gradlle pour ce projet, et pour le premier message direction « Add
 root » .
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git7.png>)
 
-On cliquera simplement sur notre projet et ensuite sur le petit plus en dessous
+On cliquera simplement sur notre projet et ensuite sur le petit « + » en dessous
 de la fenêtre de choix des Directory pour simplement ajouter notre projet en
 tant que projet Git.
 
@@ -167,12 +166,12 @@ Dernière étape de configuration, le Run. Direction Run \> Edit Configurations�
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git9.png>)
 
-Cliquez sur le « + » et créer une nouvelle « Application »
+Cliquez sur le « + » et créez une nouvelle « Application »
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git10.png>)
 
-Appelez la Desktop en main class Il faut sélectionner la classe ou se situe le
-main du projet c’est a dire DesktopLauncher tel que ci dessous. /!\\ Très
+Appelez la Desktop, en main class il faut sélectionner la classe ou se situe le
+main du projet c’est à dire DesktopLauncher tel que ci dessous. /!\\ Très
 important : Le working directory doit bien pointer sur …/core/assets où vous
 aurez le droit à de belles erreurs ;)
 
