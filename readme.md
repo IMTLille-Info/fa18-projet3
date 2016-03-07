@@ -55,7 +55,7 @@ commande de préférence) donc sous console pour Unix like et l’application gi
 sous windows avec le git Bash afin de pouvoir correctement suivre le tuto.
 
 Veillez aussi à avoir le JDK version 1.8 afin d’être sur la même configuration
-que nous. (Rendez-vous [ici](<http://www.java.com/fr/download/>) si vous ne
+que nous. (Rendez-vous [ici](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html>) si vous ne
 l’avez pas).
 
  
