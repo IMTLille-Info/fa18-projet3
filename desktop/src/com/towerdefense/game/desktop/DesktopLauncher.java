@@ -8,7 +8,6 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.towerdefense.game.MyGdxGame;
 
 public class DesktopLauncher implements ApplicationListener {
 
@@ -47,7 +46,7 @@ public class DesktopLauncher implements ApplicationListener {
 
     public static void main (String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title="Tower defense Game";
+        config.title="Tower Defense Game";
         config.width=1920;
         config.height=1080;
         new LwjglApplication(new DesktopLauncher(), config);

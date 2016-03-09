@@ -25,10 +25,10 @@ Ce projet prend part dans notre module de projet java du groupe Info.
 
 Nous avons choisi de partir sur un jeu simple mais efficace, le Tower Defense.
 
-Le but du jeu est de placer des tours ayant des specs différentes afin
-d’empêcher les vagues d’ennemis de parvenir à la fin du chemin qui leur est
-imposé par la route définie sur l’écran. Ce type de jeu est simple à comprendre,
-à prendre en main et est très additif si il est bien rodé.
+Le but du jeu est de placer des tours ayant des specificités différentes afin
+d’empêcher les vagues d’ennemies de parvenir à la fin du chemin qui leur est
+imposé. Ce type de jeu est simple à comprendre,
+à prendre en main et est très addictif s'il est bien rodé.
 
  
 
@@ -41,7 +41,7 @@ du projet et l’historique des modifications.
 Il sera développé avec intelliJ 15 CE de la société JetBrains. Cette IDE est
 gratuit (Community edition) et cross platform.
 
-Felix et Sebastion développeront sous Windows et Yonni sous Mac OSX.
+Felix et Sebastien développeront sous Windows et Yonni sous Mac OSX.
 
  
 
@@ -62,7 +62,7 @@ l’avez pas).
 
 ### IntelliJ :
 
-notre IDE est directement disponible sur le site de la compagnie en cliquant sur
+Notre IDE est directement disponible sur le site de la compagnie en cliquant sur
 ce [lien](<https://www.jetbrains.com/idea/download/>) en choisissant le lien en
 fonction de votre OS. Suivez l’installation normalement et passez à la suite.
 
@@ -79,9 +79,9 @@ Sur votre droite cliquez sur generate new Token comme ci dessous :
 
 Vous pouvez donner l’ensemble des droits sur votre compte sur ce token mais
 attention de ne pas le partager par mégarde, les tokens permettent des accès
-contrôlés à votre compte sans le mot de passe donc faîtes y attention.
+contrôlés à votre compte sans donner votre mot de passe. Faites y donc attention.
 
-une fois le token généré vous revenez sur la page d’avant, copiez le code
+Une fois le token généré vous revenez sur la page d’avant, copiez le code
 affiché à l’écran en vert
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git14.png>)
@@ -103,7 +103,7 @@ gitHub par IntelliJ ce qui permettra de commit plus simplement par la suite.
 
 Nous allons cloner le projet distant depuis le repo fa18-projet3 sur github.
 
-Lancez votre console ou git Bash (les commandes seront les mêmes quelque soit la
+Lancez votre console ou git Bash (les commandes seront les même quelque soit la
 plateforme)
 
  
@@ -119,11 +119,11 @@ Une fois dans votre dossier tapez la commande suivante :
 
 `git clone https://github.com/TelecomLille-INFO/fa18-projet3.git`
 
-Si la commande s’est exécutée correctement vous obtiendrai ce résultat :
+Si la commande s’est exécutée correctement vous obtiendrez ce résultat :
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git1.png>)
 
-Une fois ceci de fait lancer IntelliJ sur votre ordinateur et faite "new Project
+Une fois ceci réalisé, lancer IntelliJ sur votre ordinateur et faites "new Project
 with existing source"
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git2.png>)
@@ -132,7 +132,7 @@ Choisissez « build.graddle » pour l’ouverture du projet comme ci dessous :
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git3.png>)
 
-Une pop up s’ouvre faîte attention de bien indiquer dans Gradle JVM la bonne
+Une pop up s’ouvre, faites attention de bien indiquer dans Gradle JVM la bonne
 version du JDK, pour nous la version 1.8.
 
 ![](<https://raw.githubusercontent.com/TelecomLille-INFO/fa18-projet3/master/imgReadme/tuto-Git4.png>)
