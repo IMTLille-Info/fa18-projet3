@@ -14,6 +14,7 @@ public class TowerDefenseGame extends ApplicationAdapter {
     public void create () {
         batch = new SpriteBatch();
         img = new Texture("Tower_defense_map.jpg");
+        //test
     }
 
     @Override
