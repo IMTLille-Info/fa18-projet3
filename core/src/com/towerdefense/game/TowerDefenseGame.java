@@ -6,17 +6,20 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.towerdefense.game.tower.TowerBasic;
 
 public class TowerDefenseGame implements ApplicationListener {
 
     private SpriteBatch batch;
     private Texture texture;
     private Sprite sprite;
+    TowerBasic tourTest;
 
     public void create(){
         batch = new SpriteBatch();
         texture = new Texture(Gdx.files.internal("Tower_defense_map.jpg"));
         sprite = new Sprite(texture);
+        tourTest = new TowerBasic(10,10,0,0);
         }
 
     public void dispose() {
@@ -30,6 +33,7 @@ public class TowerDefenseGame implements ApplicationListener {
 
         batch.begin();
         sprite.draw(batch);
+        tourTest.display(batch);
         batch.end();
     }
 
