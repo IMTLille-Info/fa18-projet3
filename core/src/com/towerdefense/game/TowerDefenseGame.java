@@ -20,7 +20,7 @@ public class TowerDefenseGame implements ApplicationListener {
 
     public void create(){
         batch = new SpriteBatch();
-        texture = new Texture(Gdx.files.internal("Tower_defense_map.jpg"));
+        texture = new Texture(Gdx.files.internal("MapTower1.jpg"));
         sprite = new Sprite(texture);
         basicTower = new TowerBasic(10,10,40,40);
         basicUnit = new BasicUnit();
