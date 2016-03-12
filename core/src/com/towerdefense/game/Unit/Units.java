@@ -1,28 +1,15 @@
 package com.towerdefense.game.Unit;
 
-public class Units {
+/**
+ * Created by serio on 10/03/2016.
+ * abstract class for the Units
+ */
+
+public abstract class Units {
 
     private int life;
-    private float speed;
+    protected float speed;
     private int position[];
-    int posX;
-    int posY;
-
-    public int getPosX() {
-        return posX;
-    }
-
-    public void setPosX(int posX) {
-        this.posX = posX;
-    }
-
-    public int getPosY() {
-        return posY;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
-    }
 
     public Units(){
     }
