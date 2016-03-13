@@ -1,18 +1,14 @@
 Jeu Java TL — TowerDefence
 ==========================
 
- 
 
 Groupe :
 --------
 
 -   Sebastien Vignal - tontonseb
-
 -   Felix Ancel - fefefy
-
 -   Yonni Tabeling - yonninout
 
- 
 
 Projet :
 --------
@@ -22,15 +18,17 @@ git viewsource --ongithubhttps://github.com/TelecomLille-INFO/fa18-projet3.git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Ce projet prend part dans notre module de projet java du groupe Info.
+Nous avons choisi de partir sur un jeu simple mais efficaceet est très addictif s'il est bien rodé, le Tower Defense.
 
-Nous avons choisi de partir sur un jeu simple mais efficace, le Tower Defense.
 
-Le but du jeu est de placer des tours ayant des specificités différentes afin
-d’empêcher les vagues d’ennemies de parvenir à la fin du chemin qui leur est
-imposé. Ce type de jeu est simple à comprendre,
-à prendre en main et est très addictif s'il est bien rodé.
+But du jeu :
+------------
+Les règles sont d'une grande simplicité et la prise en main super facile. Ce jeu est ouvert à tous publics, pas besoin d'être un «accro» de la manette...
+Les ennemis parcourent tout simplement un chemin imposé.
+Le joueur doit positionner efficacement des tours de défense au bord du chemin afin de détruire les ennemis.
+La partie s'arrête si trop d'ennemis parviennent au bout du chemin.
+Alors faites preuve de stratégie et d'efficacité pour "canarder" tout cela et faire exploser à chaque partie votre propre record.
 
- 
 
 Le développement :
 ------------------
