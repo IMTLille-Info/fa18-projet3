@@ -18,7 +18,7 @@ git viewsource --ongithubhttps://github.com/TelecomLille-INFO/fa18-projet3.git
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Ce projet prend part dans notre module de projet java du groupe Info.
-Nous avons choisi de partir sur un jeu simple mais efficaceet est très addictif s'il est bien rodé, le Tower Defense.
+Nous avons choisi de partir sur un jeu simple mais efficace et très addictif s'il est bien rodé, le Tower Defense.
 
 
 But du jeu :
