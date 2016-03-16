@@ -1,9 +1,9 @@
 package com.towerdefense.game.Unit;
 
-/**
- * Created by serio on 10/03/2016.
- * abstract class for the Units
- */
+    /**
+     * Created by Félix on 10/03/2016.
+     * abstract class for the Units
+     */
 
 public abstract class Units {
 
