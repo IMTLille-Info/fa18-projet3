@@ -19,6 +19,10 @@ public class TowerDefenseGame implements ApplicationListener {
     private Texture texture;
     private Sprite sprite;
 
+    GraphicsDevice graphdev = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+    int width=graphdev.getDisplayMode().getWidth();
+    int height=graphdev.getDisplayMode().getHeight();
+
     TowerBasic basicTower;
     BasicUnit basicUnit;
 
@@ -27,7 +31,7 @@ public class TowerDefenseGame implements ApplicationListener {
         texture = new Texture(Gdx.files.internal("MapTower1.jpg"));
         sprite = new Sprite(texture);
         basicTower = new TowerBasic(10, 10, 40, 40);
-        basicUnit = new BasicUnit(10, 850);
+        basicUnit = new BasicUnit(10, (height/2));
 
     }
 
@@ -39,9 +43,7 @@ public class TowerDefenseGame implements ApplicationListener {
 
     public void render(){
         batch.begin();
-        GraphicsDevice graphdev = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        int width=graphdev.getDisplayMode().getWidth();
-        int height=graphdev.getDisplayMode().getHeight();
+
         sprite.setSize(width,height);
         sprite.draw(batch);
         basicTower.display(batch);
