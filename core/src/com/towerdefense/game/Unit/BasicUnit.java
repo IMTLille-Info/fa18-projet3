@@ -24,7 +24,17 @@ public class BasicUnit extends Units {
         texture = new Texture("tank.jpg");
     }
 
+    private int life = 10;
+    public int Life(){
+
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+            life--;
+        }
+        return life;
+    }
+
     public void display(SpriteBatch batch) {
-            batch.draw(texture, getPosition()[0], getPosition()[1]);
+        batch.draw(texture, getPosition()[0], getPosition()[1]);
+        getPosition()[0]++;
     }
 }

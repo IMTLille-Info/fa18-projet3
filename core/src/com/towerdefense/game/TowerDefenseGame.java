@@ -28,6 +28,7 @@ public class TowerDefenseGame implements ApplicationListener {
         sprite = new Sprite(texture);
         basicTower = new TowerBasic(10, 10, 40, 40);
         basicUnit = new BasicUnit(10, 850);
+
     }
 
     public void dispose() {
@@ -45,6 +46,11 @@ public class TowerDefenseGame implements ApplicationListener {
         sprite.draw(batch);
         basicTower.display(batch);
         basicUnit.display(batch);
+
+
+        System.out.println(basicUnit.Life());
+
+
         batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
