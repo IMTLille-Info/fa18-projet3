@@ -19,7 +19,7 @@ public class TowerBasic extends Tower{
         this.setRange(range);
         texture = new Texture("test.png");
     }
-    public void display(SpriteBatch batch){
+    public void draw(SpriteBatch batch){
         batch.draw(texture, getPosition()[0], getPosition()[1]);
     }
 
