@@ -11,12 +11,10 @@ public class DesktopLauncher{
 
     public static void main (String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        // Get Screen Size to adapt app to user screen's resolution
-        GraphicsDevice graphdev = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
-        int width=graphdev.getDisplayMode().getWidth();
-        int height=graphdev.getDisplayMode().getHeight();
+        int width = 20*60;
+        int height = 15*60;
         config.title="Tower Defense Game";
-        config.width=width;
+        config.width= width;
         config.height=height;
         new LwjglApplication(new TowerDefenseGame(), config);
     }
