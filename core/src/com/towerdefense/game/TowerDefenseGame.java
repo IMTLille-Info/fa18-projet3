@@ -13,6 +13,7 @@ import java.awt.*;
 public class TowerDefenseGame implements ApplicationListener {
 
     private SpriteBatch batch;
+
     private Texture texture;
     private Sprite sprite;
 
