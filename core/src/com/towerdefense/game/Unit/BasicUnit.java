@@ -23,8 +23,7 @@ public class BasicUnit extends Units {
     }
 
 
-
-    public void display(SpriteBatch batch) {
+    public void draw(SpriteBatch batch) {
         batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
         getPosition()[0]++;
     }

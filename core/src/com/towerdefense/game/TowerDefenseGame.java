@@ -4,13 +4,10 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.towerdefense.game.Unit.BasicUnit;
 import com.towerdefense.game.tower.TowerBasic;
-
 import java.awt.*;
 
 public class TowerDefenseGame implements ApplicationListener {
@@ -38,19 +35,15 @@ public class TowerDefenseGame implements ApplicationListener {
     public void dispose() {
         batch.dispose();
         texture.dispose();
-     //   textureAtlas.dispose();
     }
 
     public void render(){
         batch.begin();
-
-        
         sprite.setSize(width,height);
         sprite.draw(batch);
-        basicTower.display(batch);
-        basicUnit.display(batch);
-
-
+        basicTower.draw(batch);
+        basicUnit.draw(batch);
+        
         batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
