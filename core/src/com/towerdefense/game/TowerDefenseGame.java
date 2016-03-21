@@ -44,6 +44,7 @@ public class TowerDefenseGame implements ApplicationListener {
     public void render(){
         batch.begin();
 
+        
         sprite.setSize(width,height);
         sprite.draw(batch);
         basicTower.display(batch);
