@@ -31,7 +31,7 @@ public class TowerDefenseGame implements ApplicationListener {
         texture = new Texture(Gdx.files.internal("MapTower1.jpg"));
         sprite = new Sprite(texture);
         basicTower = new TowerBasic(10, 10, 40, 40);
-        basicUnit = new BasicUnit(10, (height/2));
+        basicUnit = new BasicUnit(10, (height/2), 10);
 
     }
 
@@ -44,13 +44,11 @@ public class TowerDefenseGame implements ApplicationListener {
     public void render(){
         batch.begin();
 
+        
         sprite.setSize(width,height);
         sprite.draw(batch);
         basicTower.display(batch);
         basicUnit.display(batch);
-
-
-        System.out.println(basicUnit.Life());
 
 
         batch.end();
@@ -58,6 +56,11 @@ public class TowerDefenseGame implements ApplicationListener {
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
             Gdx.app.exit();
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+            basicUnit.damage(1);
+            System.out.println(basicUnit.getLife());
+        }
+
 
     }
 
@@ -66,6 +69,7 @@ public class TowerDefenseGame implements ApplicationListener {
     }
 
     public void pause() {
+
     }
 
     public void resume() {

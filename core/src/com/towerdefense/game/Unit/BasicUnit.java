@@ -15,26 +15,17 @@ import javax.swing.text.Position;
 
 public class BasicUnit extends Units {
 
-    private Texture texture;
-
-
-    public BasicUnit(int posX, int posY){
+    public BasicUnit(int posX, int posY, int life){
         super();
+        this.setLife(life);
         this.setPosition(new int[]{posX, posY});
-        texture = new Texture("tank.jpg");
+        setTexture(new Texture("tank.jpg"));
     }
 
-    private int life = 10;
-    public int Life(){
 
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            life--;
-        }
-        return life;
-    }
 
     public void display(SpriteBatch batch) {
-        batch.draw(texture, getPosition()[0], getPosition()[1]);
+        batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
         getPosition()[0]++;
     }
 }
