@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.towerdefense.game.Unit.BasicUnit;
 import com.towerdefense.game.map.Map;
 import com.towerdefense.game.tower.TowerBasic;
-import java.awt.*;
 
 public class TowerDefenseGame implements ApplicationListener {
 
@@ -18,10 +17,6 @@ public class TowerDefenseGame implements ApplicationListener {
     private Texture texture;
     private Sprite sprite;
     private Map map;
-
-
-
-
 
     TowerBasic basicTower;
     BasicUnit basicUnit;

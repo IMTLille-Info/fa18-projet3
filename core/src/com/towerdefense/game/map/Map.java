@@ -43,11 +43,29 @@ public class Map {
         //Sprite sprite = new Sprite();
     }
 
+
+
+    public boolean isFreeSpace(){
+        int maxI = map.length;//ligne
+        //System.out.print(map.length);
+        int maxJ = map[0].length;//colonne
+
+        for (int i = 0; i < maxI; i++) {
+            for (int j = 0; j < maxJ; j++) {
+                if (map[i][j] == 'x')
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
+
     public void draw(SpriteBatch batch){
         int maxI = map.length;//ligne
         //System.out.print(map.length);
         int maxJ = map[0].length;//colonne
-        System.out.println(maxI + "" + maxJ);
+        //System.out.println(maxI + "" + maxJ);
 
         for (int i = 0; i<maxI ; i++){
             for (int j = 0; j< maxJ; j++){
