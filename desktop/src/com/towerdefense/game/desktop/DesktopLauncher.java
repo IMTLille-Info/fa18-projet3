@@ -11,8 +11,8 @@ public class DesktopLauncher{
 
     public static void main (String[] arg) {
         LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        int width = 20*60;
-        int height = 15*60;
+        int width = 20*40;
+        int height = 15*40;
         config.title="Tower Defense Game";
         config.width= width;
         config.height=height;

@@ -16,28 +16,31 @@ public class Map {
     private int width, height;
     Texture blanc;
     Texture vert;
+    int resolution = 40;
+
 
     public Map(){
         //map = new char[3][4];
+
         map = new char[][]{
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'v','v','v','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'v','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','v','v','v','v','v','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'v','x','x','v','v','v','v','v','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','x','x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'v','x','x','v','x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','v','v','v','v','v','v','v','v','v','v','v','v','v'},
+                {'v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'v','v','v','v','v','v','v','v','x','x','x','x','x','x','x','x','x','x','x','x'},
         };
-        width = 20*60;
-        height = 15*60;
+        width = 20 * resolution;
+        height = 15* resolution;
         blanc = new Texture("blanc.jpg");
         vert = new Texture("vert.jpg");
         //Sprite sprite = new Sprite();
@@ -67,14 +70,14 @@ public class Map {
         int maxJ = map[0].length;//colonne
         //System.out.println(maxI + "" + maxJ);
 
-        for (int i = 0; i<maxI ; i++){
-            for (int j = 0; j< maxJ; j++){
-                if (map[i][j]=='x')
-                    batch.draw(vert,j*width/maxJ,i*height/maxI,width/20,height/15);
-
-                else if(map[i][j]=='v')
-                    batch.draw(blanc,j*width/maxJ,i*height/maxI,width/20,height/15);
-
+        for (int i = 0; i < maxI ; i++){
+            for (int j = 0; j < maxJ; j++){
+                if (map[i][j]=='x') {
+                    batch.draw(vert, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
+                }
+                else if(map[i][j]=='v') {
+                    batch.draw(blanc, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
+                }
             }
         }
 
