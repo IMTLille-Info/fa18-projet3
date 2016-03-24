@@ -25,9 +25,13 @@ But du jeu :
 ------------
 Les règles sont d'une grande simplicité et la prise en main super facile. Ce jeu est ouvert à tous publics, pas besoin d'être un «accro» de la manette...
 Les ennemis parcourent tout simplement un chemin imposé.
-Le joueur doit positionner efficacement des tours de défense au bord du chemin afin de détruire les ennemis.
+Le joueur doit positionner efficacement des tours de défense de part et d'autre du chemin afin de détruire les ennemis.
+Vous disposer de trois types de tours (jaune, orange et rouge) qui chacune possède des caractéristiques différente (puissance, fréquence de tir...).
+Vous pouvez disposer d'autant de tours que votre crédit vous le permet. Bien sur les tours rouges (les plus puissantes) vous couteront plus de crédits que les jaunes et bien plus encore que les vertes.
+Chaque fois que le tir laser d'une de vos tours touche la cible cette dernière voit son pourcentage de vie se réduire jusqu'à sa destruction totale.
 La partie s'arrête si trop d'ennemis parviennent au bout du chemin.
 Alors faites preuve de stratégie et d'efficacité pour "canarder" tout cela et faire exploser à chaque partie votre propre record.
+
 
 
 Le développement :
