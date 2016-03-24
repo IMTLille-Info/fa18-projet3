@@ -40,7 +40,7 @@ public class Map {
                 {'v','v','v','v','v','v','v','v','x','x','x','x','x','x','x','x','x','x','x','x'},
         };
         width = 20 * resolution;
-        height = 15* resolution;
+        height = 15 * resolution;
         blanc = new Texture("blanc.jpg");
         vert = new Texture("vert.jpg");
 
@@ -49,17 +49,9 @@ public class Map {
 
 
 
-    public boolean isFreeSpace(){
-        int maxI = map.length;//ligne
-        //System.out.print(map.length);
-        int maxJ = map[0].length;//colonne
-
-        for (int i = 0; i < maxI; i++) {
-            for (int j = 0; j < maxJ; j++) {
-                if (map[i][j] == 'x')
-                    return true;
-            }
-        }
+    public boolean isFreeSpace(int i, int j){
+        if (map[i][j] == 'x')
+            return true;
         return false;
     }
 
