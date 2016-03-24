@@ -58,7 +58,6 @@ public class TowerDefenseGame implements ApplicationListener {
             System.out.println(basicUnit.getLife());
         }
 
-
     }
 
     public void resize(int width, int height) {

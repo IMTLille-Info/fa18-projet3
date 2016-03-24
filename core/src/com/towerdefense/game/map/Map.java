@@ -43,6 +43,7 @@ public class Map {
         height = 15* resolution;
         blanc = new Texture("blanc.jpg");
         vert = new Texture("vert.jpg");
+
         //Sprite sprite = new Sprite();
     }
 
