@@ -16,33 +16,46 @@ public class Map {
     private int width, height;
     Texture blanc;
     Texture vert;
+    Texture orangeTower;
+    Texture redTower;
+    Texture yellowTower;
     int resolution = 40;
 
 
     public Map(){
-        //map = new char[3][4];
+
+        /*
+        * x = free space
+        * c = mob road
+        * y = yellow tower
+        * o = orange tower
+        * r = red tower
+        */
 
         map = new char[][]{
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'v','v','v','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'v','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'v','x','x','v','v','v','v','v','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','x','x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'v','x','x','v','x','x','x','v','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','x','x','x','x','v','v','v','v','v','v','v','v','v','v','v','v','v'},
-                {'v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'x','c','c','c','c','c','x','x','x','c','c','c','c','c','x','x','x','x','x','x'},
+                {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
+                {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
+                {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
+                {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
+                {'c','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','c','c'},
+                {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
+                {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
+                {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
+                {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
+                {'x','x','x','x','x','c','c','c','c','c','x','x','x','c','c','c','c','c','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'v','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'v','v','v','v','v','v','v','v','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'x','x','x','x','x','x','o','r','y','x','x','x','x','x','x','x','x','x','x','x'},
         };
-        width = 20 * resolution;
-        height = 15 * resolution;
-        blanc = new Texture("blanc.jpg");
-        vert = new Texture("vert.jpg");
+        width       = 20 * resolution;
+        height      = 15 * resolution;
+        blanc       = new Texture("blanc.jpg");
+        vert        = new Texture("vert.jpg");
+        orangeTower = new Texture("tour orange 3.jpg");
+        redTower    = new Texture("tour rouge 3.jpg");
+        yellowTower = new Texture("tour jaune 3.jpg");
 
         //Sprite sprite = new Sprite();
     }
@@ -68,8 +81,17 @@ public class Map {
                 if (map[i][j]=='x') {
                     batch.draw(vert, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
                 }
-                else if(map[i][j]=='v') {
+                else if(map[i][j]=='c') {
                     batch.draw(blanc, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
+                }
+                else if(map[i][j]=='o') {
+                    batch.draw(orangeTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
+                }
+                else if(map[i][j]=='r') {
+                    batch.draw(yellowTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
+                }
+                else if(map[i][j]=='y') {
+                    batch.draw(redTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
                 }
             }
         }
