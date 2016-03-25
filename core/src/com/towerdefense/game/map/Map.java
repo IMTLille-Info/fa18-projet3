@@ -51,6 +51,8 @@ public class Map {
         };
         width       = 20 * resolution;
         height      = 15 * resolution;
+
+        //Texture init
         blanc       = new Texture("blanc.jpg");
         vert        = new Texture("vert.jpg");
         orangeTower = new Texture("tour orange 3.jpg");
@@ -87,10 +89,10 @@ public class Map {
                 else if(map[i][j]=='o') {
                     batch.draw(orangeTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
                 }
-                else if(map[i][j]=='r') {
+                else if(map[i][j]=='y') {
                     batch.draw(yellowTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
                 }
-                else if(map[i][j]=='y') {
+                else if(map[i][j]=='r') {
                     batch.draw(redTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
                 }
             }

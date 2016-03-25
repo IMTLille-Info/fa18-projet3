@@ -3,12 +3,14 @@ package com.towerdefense.game;
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.towerdefense.game.Unit.BasicUnit;
 import com.towerdefense.game.map.Map;
 import com.towerdefense.game.tower.TowerBasic;
+
 
 public class TowerDefenseGame implements ApplicationListener {
 
@@ -32,6 +34,50 @@ public class TowerDefenseGame implements ApplicationListener {
 
         basicTower = new TowerBasic(10, 10, 40, 40);
         basicUnit = new BasicUnit(10, (map.getHeight()/2), 10);
+
+        Gdx.input.setInputProcessor(new InputProcessor() {
+            @Override
+            public boolean keyDown(int keycode) {
+                return false;
+            }
+
+            @Override
+            public boolean keyUp(int keycode) {
+                return false;
+            }
+
+            @Override
+            public boolean keyTyped(char character) {
+                return false;
+            }
+
+            @Override
+            public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                System.out.print("x: "+screenX/40+" y: "+screenY/40+" ");
+                System.out.println(map.isFreeSpace(screenY/40,screenX/40));
+                return false;
+            }
+
+            @Override
+            public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                return false;
+            }
+
+            @Override
+            public boolean touchDragged(int screenX, int screenY, int pointer) {
+                return false;
+            }
+
+            @Override
+            public boolean mouseMoved(int screenX, int screenY) {
+                return false;
+            }
+
+            @Override
+            public boolean scrolled(int amount) {
+                return false;
+            }
+        });
 
     }
 
