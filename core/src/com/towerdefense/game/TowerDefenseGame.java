@@ -7,6 +7,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.ui.*;
 import com.towerdefense.game.Unit.BasicUnit;
 import com.towerdefense.game.map.Map;
 import com.towerdefense.game.tower.TowerBasic;
@@ -17,13 +18,15 @@ public class TowerDefenseGame implements ApplicationListener {
     private SpriteBatch batch;
 
     private Texture texture;
-    private Sprite sprite;
+    private Sprite skin;
     private Map map;
+
 
     TowerBasic basicTower;
     BasicUnit basicUnit;
 
     public void create() {
+
         map = new Map();
         int width = map.getWidth();
         int height = map.getHeight();
@@ -53,8 +56,14 @@ public class TowerDefenseGame implements ApplicationListener {
 
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-                System.out.print("x: "+screenX/40+" y: "+screenY/40+" ");
-                System.out.println(map.isFreeSpace(screenY/40,screenX/40));
+                if ((screenX < 20*40)&&(screenY<15*40)) {
+                    System.out.print("x: " + screenX / 40 + " y: " + screenY / 40 + " ");
+                    System.out.println(map.isFreeSpace(screenY / 40, screenX / 40));
+                    //Sprite skin = new Sprite(new Texture("tour rouge 3.jpg"));
+                }
+                //TODO gestion click sur les tours du menu
+
+
                 return false;
             }
 
@@ -88,9 +97,12 @@ public class TowerDefenseGame implements ApplicationListener {
 
     public void render(){
         batch.begin();
+
         //sprite.setSize(width,height);
         //sprite.draw(batch);
         map.draw(batch);
+
+
        // basicTower.draw(batch);
        // basicUnit.draw(batch);
         
