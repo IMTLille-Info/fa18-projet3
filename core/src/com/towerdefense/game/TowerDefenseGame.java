@@ -36,7 +36,11 @@ public class TowerDefenseGame implements ApplicationListener {
         //sprite = new Sprite();
 
         basicTower = new TowerBasic(10, 10, 40, 40);
-        basicUnit = new BasicUnit(10, (map.getHeight()/2), 10);
+
+
+        basicUnit = new BasicUnit(10, 300,2);
+
+
 
         Gdx.input.setInputProcessor(new InputProcessor() {
             @Override
@@ -99,12 +103,12 @@ public class TowerDefenseGame implements ApplicationListener {
         batch.begin();
 
         //sprite.setSize(width,height);
-        //sprite.draw(batch);
+       //sprite.draw(batch);
         map.draw(batch);
 
 
        // basicTower.draw(batch);
-       // basicUnit.draw(batch);
+       basicUnit.draw(batch);
         
         batch.end();
 

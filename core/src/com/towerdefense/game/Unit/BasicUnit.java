@@ -5,13 +5,9 @@ package com.towerdefense.game.Unit;
  * basic class for the basicUnit
  */
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.sun.xml.internal.ws.dump.LoggingDumpTube;
-
-import javax.swing.text.Position;
+import com.towerdefense.game.map.Map;
 
 public class BasicUnit extends Units {
 
@@ -25,6 +21,6 @@ public class BasicUnit extends Units {
 
     public void draw(SpriteBatch batch) {
         batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
-        getPosition()[0]++;
     }
+
 }
