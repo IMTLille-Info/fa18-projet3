@@ -1,6 +1,7 @@
 package com.towerdefense.game.Unit;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.towerdefense.game.map.Map;
 
 /**
      * Created by Félix on 10/03/2016.
@@ -56,4 +57,5 @@ public abstract class Units {
         if (life < 0)
             life = 0;
     }
+
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
+import com.sun.corba.se.impl.util.SUNVMCID;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 /**
@@ -21,7 +22,6 @@ public class Map {
     Texture yellowTower;
     int resolution = 40;
 
-
     public Map(){
 
         /*
@@ -30,6 +30,7 @@ public class Map {
         * y = yellow tower
         * o = orange tower
         * r = red tower
+        * s = start
         */
 
         map = new char[][]{
@@ -40,7 +41,7 @@ public class Map {
                 {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
                 {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
                 {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
-                {'c','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','c','c'},
+                {'s','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','c','c'},
                 {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
                 {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
                 {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
@@ -62,8 +63,6 @@ public class Map {
         //Sprite sprite = new Sprite();
     }
 
-
-
     public boolean isFreeSpace(int i, int j){
         if (map[i][j] == 'x')
             return true;
@@ -71,34 +70,39 @@ public class Map {
     }
 
 
-
-    public void draw(SpriteBatch batch){
+    public void draw(SpriteBatch batch) {
         int maxI = map.length;//ligne
         //System.out.print(map.length);
         int maxJ = map[0].length;//colonne
         //System.out.println(maxI + "" + maxJ);
 
-        for (int i = 0; i < maxI ; i++){
-            for (int j = 0; j < maxJ; j++){
-                if (map[i][j]=='x') {
-                    batch.draw(vert, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
+
+
+        for (int i = 0; i < maxI; i++) {
+            for (int j = 0; j < maxJ; j++) {
+                int scaledWidth = j * width / maxJ;
+                int scaledHeight = (maxI - 1 - i) * height / maxI;
+
+                if (map[i][j] == 's') {
+
                 }
-                else if(map[i][j]=='c') {
-                    batch.draw(blanc, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
-                }
-                else if(map[i][j]=='o') {
-                    batch.draw(orangeTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
-                }
-                else if(map[i][j]=='y') {
-                    batch.draw(yellowTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
-                }
-                else if(map[i][j]=='r') {
-                    batch.draw(redTower, j * width / maxJ, (maxI-1-i) * height / maxI, width / 20, height / 15);
+                if (map[i][j] == 'x') {
+                    batch.draw(vert, scaledWidth, scaledHeight, width / 20, height / 15);
+                } else if (map[i][j] == 'c' || map[i][j] == 's') {
+                    batch.draw(blanc, scaledWidth, scaledHeight, width / 20, height / 15);
+                } else if (map[i][j] == 'o') {
+                    batch.draw(orangeTower, scaledWidth, scaledHeight, width / 20, height / 15);
+                } else if (map[i][j] == 'y') {
+                    batch.draw(yellowTower, scaledWidth, scaledHeight, width / 20, height / 15);
+                } else if (map[i][j] == 'r') {
+                    batch.draw(redTower, scaledWidth, scaledHeight, width / 20, height / 15);
                 }
             }
         }
-
     }
+
+
+
 
     public char[][] getMap() {
         return map;
