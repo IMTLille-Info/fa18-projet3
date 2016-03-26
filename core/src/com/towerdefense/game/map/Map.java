@@ -20,6 +20,7 @@ public class Map {
     Texture orangeTower;
     Texture redTower;
     Texture yellowTower;
+    Texture menu;
     int resolution = 40;
 
     public Map(){
@@ -59,6 +60,7 @@ public class Map {
         orangeTower = new Texture("tour orange 3.jpg");
         redTower    = new Texture("tour rouge 3.jpg");
         yellowTower = new Texture("tour jaune 3.jpg");
+        menu        = new Texture("test.jpg");
 
         //Sprite sprite = new Sprite();
     }
@@ -75,7 +77,7 @@ public class Map {
         //System.out.print(map.length);
         int maxJ = map[0].length;//colonne
         //System.out.println(maxI + "" + maxJ);
-
+        //batch.draw(menu,0,20*40);
 
 
         for (int i = 0; i < maxI; i++) {
@@ -99,6 +101,9 @@ public class Map {
                 }
             }
         }
+        batch.draw(menu,width,0);
+
+
     }
 
 
