@@ -4,10 +4,12 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.ui.*;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.towerdefense.game.Unit.BasicUnit;
 import com.towerdefense.game.map.Map;
 import com.towerdefense.game.tower.TowerBasic;
@@ -21,13 +23,29 @@ public class TowerDefenseGame implements ApplicationListener {
     private Sprite skin;
     private Map map;
 
+    private static final int FRAME_COLS = 10;
+    private  static final int FRAME_ROWS = 1 ;
+
+    Animation movingAnimation;
+    Texture movingSheet;
+    TextureRegion[] movingFrames;
+    SpriteBatch spriteBatch;
+    TextureRegion currentFrame;
+
+
+    float stateTime;
+
+
 
     TowerBasic basicTower;
     BasicUnit basicUnit;
 
     public void create() {
 
+
+
         map = new Map();
+
         int width = map.getWidth();
         int height = map.getHeight();
 
@@ -36,9 +54,22 @@ public class TowerDefenseGame implements ApplicationListener {
         //sprite = new Sprite();
 
         basicTower = new TowerBasic(10, 10, 40, 40);
-
-
         basicUnit = new BasicUnit(10, 300,2);
+
+        movingSheet = new Texture(Gdx.files.internal("MulticolorTanks.png"));
+        TextureRegion[][] tmp = TextureRegion.split(movingSheet, movingSheet.getWidth()/FRAME_COLS, movingSheet.getHeight()/FRAME_ROWS);              // #10
+        movingFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
+        int index = 0;
+        for (int i = 0; i < FRAME_ROWS; i++) {
+            for (int j = 0; j < FRAME_COLS; j++) {
+                movingFrames[index++] = tmp[i][j];
+            }
+        }
+        movingAnimation = new Animation(0.1f, movingFrames);
+        spriteBatch = new SpriteBatch();
+        stateTime = 0f;
+
+
 
 
 
@@ -101,15 +132,22 @@ public class TowerDefenseGame implements ApplicationListener {
 
     public void render(){
         batch.begin();
+        spriteBatch.begin();
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
+        stateTime += Gdx.graphics.getDeltaTime();
+        currentFrame = movingAnimation.getKeyFrame(stateTime, true);
 
         //sprite.setSize(width,height);
        //sprite.draw(batch);
+
+
+        //batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
+        spriteBatch.draw(currentFrame, 50, 300);
+
         map.draw(batch);
-
-
        // basicTower.draw(batch);
-       basicUnit.draw(batch);
-        
+       //basicUnit.draw(batch);
+        spriteBatch.end();
         batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){
@@ -121,6 +159,12 @@ public class TowerDefenseGame implements ApplicationListener {
         }
 
     }
+
+
+    private float x = 300 , y = 2;
+    private int direction = 0;
+    private boolean isMoving = false;
+    private Animation[] animations = new  Animation[8];
 
     public void resize(int width, int height) {
 
