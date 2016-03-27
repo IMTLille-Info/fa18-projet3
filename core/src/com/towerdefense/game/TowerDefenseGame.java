@@ -23,7 +23,7 @@ public class TowerDefenseGame implements ApplicationListener {
     private Sprite skin;
     private Map map;
 
-    private static final int FRAME_COLS = 10;
+    private static final int FRAME_COLS = 8;
     private  static final int FRAME_ROWS = 1 ;
 
     Animation movingAnimation;
@@ -32,17 +32,12 @@ public class TowerDefenseGame implements ApplicationListener {
     SpriteBatch spriteBatch;
     TextureRegion currentFrame;
 
-
     float stateTime;
-
-
 
     TowerBasic basicTower;
     BasicUnit basicUnit;
 
     public void create() {
-
-
 
         map = new Map();
 
@@ -57,7 +52,7 @@ public class TowerDefenseGame implements ApplicationListener {
         basicUnit = new BasicUnit(10, 300,2);
 
         movingSheet = new Texture(Gdx.files.internal("MulticolorTanks.png"));
-        TextureRegion[][] tmp = TextureRegion.split(movingSheet, movingSheet.getWidth()/FRAME_COLS, movingSheet.getHeight()/FRAME_ROWS);              // #10
+        TextureRegion[][] tmp = TextureRegion.split(movingSheet, movingSheet.getWidth()/FRAME_COLS, movingSheet.getHeight()/FRAME_ROWS);
         movingFrames = new TextureRegion[FRAME_COLS * FRAME_ROWS];
         int index = 0;
         for (int i = 0; i < FRAME_ROWS; i++) {
@@ -65,7 +60,7 @@ public class TowerDefenseGame implements ApplicationListener {
                 movingFrames[index++] = tmp[i][j];
             }
         }
-        movingAnimation = new Animation(0.1f, movingFrames);
+        movingAnimation = new Animation(0.2f, movingFrames);
         spriteBatch = new SpriteBatch();
         stateTime = 0f;
 
@@ -142,7 +137,8 @@ public class TowerDefenseGame implements ApplicationListener {
 
 
         //batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
-        spriteBatch.draw(currentFrame, 50, 300);
+        spriteBatch.draw(currentFrame, 2, 280);
+
 
         map.draw(batch);
        // basicTower.draw(batch);
@@ -159,12 +155,6 @@ public class TowerDefenseGame implements ApplicationListener {
         }
 
     }
-
-
-    private float x = 300 , y = 2;
-    private int direction = 0;
-    private boolean isMoving = false;
-    private Animation[] animations = new  Animation[8];
 
     public void resize(int width, int height) {
 
