@@ -121,7 +121,11 @@ public class Map {
             }
             batch.draw(menu, width, 0);
         }
+        for (Point p : wayPoints){
+            batch.draw(new Texture("monster.jpg"),(int)p.getY()*40,560-(int)p.getX()*40 );
+        }
     }
+
     public void initWaypoint() {
         int i = 0, j = 0;
         char lastDirection;
@@ -174,20 +178,11 @@ public class Map {
                     break;
             }
         }
-        for (Point p : wayPoints){
-            System.out.println("x = "+p.getX()+" y = "+p.getY());
-        }
-
-
-
-
+        //affichage des waypoints
+        /*for (Point p : wayPoints){
+            System.out.println("x = "+p.getX()*40+" y = "+p.getY()*40);
+        }*/
     }
-
-
-
-
-
-
 
 
     public int getWidth() {

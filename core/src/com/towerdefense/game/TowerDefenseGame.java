@@ -167,11 +167,11 @@ public class TowerDefenseGame implements ApplicationListener {
         //batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
         map.draw(batch);
         menu.draw(batch);
-        basicUnit.draw(batch);
+        //basicUnit.draw(batch);
 
 
 
-        batch.draw(currentFrame, 2, 280);
+        //batch.draw(currentFrame, 2, 280);
 
         // basicTower.draw(batch);
        //basicUnit.draw(batch);
