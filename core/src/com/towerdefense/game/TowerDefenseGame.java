@@ -22,14 +22,19 @@ public class TowerDefenseGame implements ApplicationListener {
     private Texture texture;
     private Sprite skin;
     private Map map;
+    private char menuChoice;
+    private boolean menuTouched = false;
+
+    private BuyTower menu;
+
 
     private static final int FRAME_COLS = 8;
-    private  static final int FRAME_ROWS = 1 ;
+    private static final int FRAME_ROWS = 1 ;
 
     Animation movingAnimation;
     Texture movingSheet;
     TextureRegion[] movingFrames;
-    SpriteBatch spriteBatch;
+    //SpriteBatch batch;
     TextureRegion currentFrame;
 
     float stateTime;
@@ -40,9 +45,12 @@ public class TowerDefenseGame implements ApplicationListener {
     public void create() {
 
         map = new Map();
+        menu = new BuyTower();
 
         int width = map.getWidth();
         int height = map.getHeight();
+
+
 
         batch = new SpriteBatch();
         //texture = new Texture();
@@ -61,7 +69,7 @@ public class TowerDefenseGame implements ApplicationListener {
             }
         }
         movingAnimation = new Animation(0.2f, movingFrames);
-        spriteBatch = new SpriteBatch();
+        batch = new SpriteBatch();
         stateTime = 0f;
 
 
@@ -87,13 +95,34 @@ public class TowerDefenseGame implements ApplicationListener {
             @Override
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 if ((screenX < 20*40)&&(screenY<15*40)) {
+                    if (menuTouched && map.isFreeSpace(screenY / 40, screenX / 40)){
+                        map.placeTower(menuChoice,screenY / 40, screenX / 40);
+                        menuTouched = false;
+                    }
                     System.out.print("x: " + screenX / 40 + " y: " + screenY / 40 + " ");
                     System.out.println(map.isFreeSpace(screenY / 40, screenX / 40));
                     //Sprite skin = new Sprite(new Texture("tour rouge 3.jpg"));
                 }
                 //TODO gestion click sur les tours du menu
+                if ((screenX > 820)&&(screenX<860)){
+                    if ((screenY>40)&&(screenY<80)) {
+                        //tour rouge
+                        menuTouched = true;
+                        menuChoice = 'r';
+                    }
+                    else if ((screenY>120)&&(screenY<160)) {
+                        //tour orange
+                        menuTouched = true;
+                        menuChoice = 'o';
+                    }
+                    else if ((screenY>200)&&(screenY<240)) {
+                        //tour jaune
+                        menuTouched = true;
+                        menuChoice = 'y';
+                    }
+                    //System.out.println("screenX = [" + screenX + "], screenY = [" + screenY + "], pointer = [" + pointer + "], button = [" + button + "]");
 
-
+                }
                 return false;
             }
 
@@ -127,7 +156,7 @@ public class TowerDefenseGame implements ApplicationListener {
 
     public void render(){
         batch.begin();
-        spriteBatch.begin();
+        //batch.begin();
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         stateTime += Gdx.graphics.getDeltaTime();
         currentFrame = movingAnimation.getKeyFrame(stateTime, true);
@@ -137,13 +166,16 @@ public class TowerDefenseGame implements ApplicationListener {
 
 
         //batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
-        spriteBatch.draw(currentFrame, 2, 280);
-
-
         map.draw(batch);
-       // basicTower.draw(batch);
+        menu.draw(batch);
+
+
+
+        batch.draw(currentFrame, 2, 280);
+
+        // basicTower.draw(batch);
        //basicUnit.draw(batch);
-        spriteBatch.end();
+        //batch.end();
         batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){

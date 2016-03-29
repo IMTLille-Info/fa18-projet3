@@ -49,7 +49,7 @@ public class Map {
                 {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
                 {'x','x','x','x','x','c','c','c','c','c','x','x','x','c','c','c','c','c','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','x','x','x','x','x','o','r','y','x','x','x','x','x','x','x','x','x','x','x'},
+                {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
         };
         width       = 20 * resolution;
         height      = 15 * resolution;
@@ -69,6 +69,10 @@ public class Map {
         if (map[i][j] == 'x')
             return true;
         return false;
+    }
+    public void placeTower(char tower,int i, int j){
+        map[i][j] = tower;
+
     }
 
 
