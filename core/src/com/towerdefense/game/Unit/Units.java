@@ -11,6 +11,7 @@ import com.towerdefense.game.map.Map;
 public abstract class Units {
 
     private int life;
+    private int currentLife;
     protected float speed;
     private int position[];
     private Texture texture;
@@ -52,10 +53,18 @@ public abstract class Units {
         this.position = position;
     }
 
+    public int getCurrentLife() {
+        return currentLife;
+    }
+
+    public void setCurrentLife(int currentLife) {
+        this.currentLife = currentLife;
+    }
+
     public void damage(int damage){
-        life -= damage;
-        if (life < 0)
-            life = 0;
+        currentLife -= damage;
+        if (currentLife < 0)
+            currentLife = 0;
     }
 
 }

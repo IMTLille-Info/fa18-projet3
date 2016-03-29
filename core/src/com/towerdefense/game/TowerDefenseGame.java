@@ -103,8 +103,8 @@ public class TowerDefenseGame implements ApplicationListener {
                     System.out.println(map.isFreeSpace(screenY / 40, screenX / 40));
                     //Sprite skin = new Sprite(new Texture("tour rouge 3.jpg"));
                 }
-                //TODO gestion click sur les tours du menu
-                if ((screenX > 820)&&(screenX<860)){
+
+                if ((screenX > 820)&&(screenX<860)){// alignement des différents boutons
                     if ((screenY>40)&&(screenY<80)) {
                         //tour rouge
                         menuTouched = true;
@@ -120,7 +120,6 @@ public class TowerDefenseGame implements ApplicationListener {
                         menuTouched = true;
                         menuChoice = 'y';
                     }
-                    //System.out.println("screenX = [" + screenX + "], screenY = [" + screenY + "], pointer = [" + pointer + "], button = [" + button + "]");
 
                 }
                 return false;
@@ -168,6 +167,7 @@ public class TowerDefenseGame implements ApplicationListener {
         //batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
         map.draw(batch);
         menu.draw(batch);
+        basicUnit.draw(batch);
 
 
 

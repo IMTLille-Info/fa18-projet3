@@ -20,9 +20,14 @@ public class BasicUnit extends Units {
     public BasicUnit(int posX, int posY, int life){
         super();
         this.setLife(life);
+        this.setCurrentLife(life);
         this.setPosition(new int[]{posX, posY});
-       // setTexture(new Texture("MulticolorTanks.png"));
+        setTexture(new Texture("monster.jpg"));
 
+    }
+
+    public void draw(SpriteBatch batch){
+        batch.draw(this.getTexture(),this.getPosition()[0],this.getPosition()[1]);
     }
 
 

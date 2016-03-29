@@ -5,7 +5,12 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
 import com.sun.corba.se.impl.util.SUNVMCID;
+import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.Point;
 
 /**
  * Created by Yonni  on 21/03/2016.
@@ -13,6 +18,9 @@ import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 public class Map {
 
     private char map[][];
+
+
+    private List<Point> wayPoints;
 
     private int width, height;
     Texture blanc;
@@ -27,32 +35,38 @@ public class Map {
 
         /*
         * x = free space
-        * c = mob road
+        * c = mob road U = UP D = DOWN R = RIGHT L = LEFT -> use for initWaypoint
         * y = yellow tower
         * o = orange tower
         * r = red tower
-        * s = start
+        * S = Start E = End
         */
+
 
         map = new char[][]{
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','c','c','c','c','c','x','x','x','c','c','c','c','c','x','x','x','x','x','x'},
+                {'x','R','c','c','c','D','x','x','x','R','c','c','c','D','x','x','x','x','x','x'},
                 {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
                 {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
                 {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
                 {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
-                {'s','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','c','c'},
+                {'S','U','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','R','c','E'},
                 {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
                 {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
                 {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
                 {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
-                {'x','x','x','x','x','c','c','c','c','c','x','x','x','c','c','c','c','c','x','x'},
+                {'x','x','x','x','x','R','c','c','c','U','x','x','x','R','c','c','c','U','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
         };
         width       = 20 * resolution;
         height      = 15 * resolution;
+        //System.out.println(map[7][1]);
+
+        wayPoints = new ArrayList<Point>();
+        initWaypoint();
+
 
         //Texture init
         blanc       = new Texture("blanc.jpg");
@@ -89,23 +103,82 @@ public class Map {
                 int scaledWidth = j * width / maxJ;
                 int scaledHeight = (maxI - 1 - i) * height / maxI;
 
-                if (map[i][j] == 's') {
-
-                }
                 if (map[i][j] == 'x') {
                     batch.draw(vert, scaledWidth, scaledHeight, width / 20, height / 15);
-                } else if (map[i][j] == 'c' || map[i][j] == 's') {
-                    batch.draw(blanc, scaledWidth, scaledHeight, width / 20, height / 15);
+
                 } else if (map[i][j] == 'o') {
                     batch.draw(orangeTower, scaledWidth, scaledHeight, width / 20, height / 15);
+
                 } else if (map[i][j] == 'y') {
                     batch.draw(yellowTower, scaledWidth, scaledHeight, width / 20, height / 15);
+
                 } else if (map[i][j] == 'r') {
                     batch.draw(redTower, scaledWidth, scaledHeight, width / 20, height / 15);
+
+                } else {
+                    batch.draw(blanc, scaledWidth, scaledHeight, width / 20, height / 15);
+                }
+            }
+            batch.draw(menu, width, 0);
+        }
+    }
+    public void initWaypoint() {
+        int i = 0, j = 0;
+        char lastDirection;
+        //Recherche du debut du chemin
+        for (i = 0; i < 15; i++) {
+            for (j = 0; j < 20; j++) {
+                if (map[i][j] == 'S') {
+                    wayPoints.add(new Point(i, j));
                 }
             }
         }
-        batch.draw(menu,width,0);
+        i = wayPoints.get(0).x;
+        j = wayPoints.get(0).y;
+
+        while ((map[i][j] != 'U')&&(map[i][j] != 'D')){
+            boolean test = map[i][j] != 'U';
+            j++;
+        }
+        lastDirection = map[i][j]; // on affecte la direction
+        wayPoints.add(new Point(i,j)); // on ajoute un waypoint par la suite
+        while (map[i][j] != 'E'){
+            switch (lastDirection){
+                case 'U':
+                    i--;
+                    if ((map[i][j] == 'R')||(map[i][j] == 'L')||(map[i][j]=='E')){
+                        wayPoints.add(new Point(i,j));
+                        lastDirection = map[i][j];
+                    }
+                    break;
+                case 'D':
+                    i++;
+                    if ((map[i][j] == 'R')||(map[i][j] == 'L')||(map[i][j]=='E')){
+                        wayPoints.add(new Point(i,j));
+                        lastDirection = map[i][j];
+                    }
+                    break;
+                case 'R':
+                    j++;
+                    if ((map[i][j] == 'U')||(map[i][j] == 'D')||(map[i][j]=='E')){
+                        wayPoints.add(new Point(i,j));
+                        lastDirection = map[i][j];
+                    }
+                    break;
+                case 'L':
+                    j--;
+                    if ((map[i][j] == 'U')||(map[i][j] == 'D')||(map[i][j]=='E')){
+                        wayPoints.add(new Point(i,j));
+                        lastDirection = map[i][j];
+                    }
+                    break;
+            }
+        }
+        for (Point p : wayPoints){
+            System.out.println("x = "+p.getX()+" y = "+p.getY());
+        }
+
+
 
 
     }
@@ -113,13 +186,9 @@ public class Map {
 
 
 
-    public char[][] getMap() {
-        return map;
-    }
 
-    public void setMap(char[][] map) {
-        this.map = map;
-    }
+
+
 
     public int getWidth() {
         return width;
