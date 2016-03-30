@@ -14,22 +14,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.towerdefense.game.map.Map;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 public class BasicUnit extends Units {
 
 
-    public BasicUnit(int posX, int posY, int life){
+    public BasicUnit(Point coordonees, int life, ArrayList<Point> wayPoints,int nbWayPoints){
         super();
+        this.setLastWayPoint(0);
         this.setLife(life);
         this.setCurrentLife(life);
-        this.setPosition(new int[]{posX, posY});
-        setTexture(new Texture("monster.jpg"));
+        this.setCoordonees(coordonees);
+        this.setTexture(new Texture("monster.jpg"));
+        this.setNbWayPoints(nbWayPoints);
+        this.setWayPoints(wayPoints);
 
     }
-
-    public void draw(SpriteBatch batch){
-        batch.draw(this.getTexture(),this.getPosition()[0],this.getPosition()[1]);
-    }
-
-
-
 }

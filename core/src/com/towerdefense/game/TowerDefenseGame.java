@@ -14,6 +14,8 @@ import com.towerdefense.game.Unit.BasicUnit;
 import com.towerdefense.game.map.Map;
 import com.towerdefense.game.tower.TowerBasic;
 
+import java.awt.*;
+
 
 public class TowerDefenseGame implements ApplicationListener {
 
@@ -24,6 +26,7 @@ public class TowerDefenseGame implements ApplicationListener {
     private Map map;
     private char menuChoice;
     private boolean menuTouched = false;
+    private Point start;
 
     private BuyTower menu;
 
@@ -46,6 +49,7 @@ public class TowerDefenseGame implements ApplicationListener {
 
         map = new Map();
         menu = new BuyTower();
+        start = new Point((int)map.getWayPoints().get(0).getX()*40,(int)map.getWayPoints().get(0).getY()*40);
 
         int width = map.getWidth();
         int height = map.getHeight();
@@ -56,8 +60,9 @@ public class TowerDefenseGame implements ApplicationListener {
         //texture = new Texture();
         //sprite = new Sprite();
 
+
         basicTower = new TowerBasic(10, 10, 40, 40);
-        basicUnit = new BasicUnit(10, 300,2);
+        basicUnit = new BasicUnit(start,10,map.getWayPoints(),map.getNbWayPoint());
 
         movingSheet = new Texture(Gdx.files.internal("MulticolorTanks.png"));
         TextureRegion[][] tmp = TextureRegion.split(movingSheet, movingSheet.getWidth()/FRAME_COLS, movingSheet.getHeight()/FRAME_ROWS);
@@ -167,7 +172,7 @@ public class TowerDefenseGame implements ApplicationListener {
         //batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
         map.draw(batch);
         menu.draw(batch);
-        //basicUnit.draw(batch);
+        basicUnit.draw(batch);
 
 
 

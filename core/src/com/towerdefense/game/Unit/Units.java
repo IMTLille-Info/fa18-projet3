@@ -1,7 +1,12 @@
 package com.towerdefense.game.Unit;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.towerdefense.game.map.Map;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
      * Created by Félix on 10/03/2016.
@@ -11,12 +16,14 @@ import com.towerdefense.game.map.Map;
 public abstract class Units {
 
     private int life;
+    private int lastWayPoint;
+    private int nbWayPoints;
+    private ArrayList<Point> wayPoints;
+
     private int currentLife;
     protected float speed;
-    private int position[];
+    private Point coordonees;
     private Texture texture;
-
-
     public Texture getTexture() {
         return texture;
     }
@@ -28,6 +35,64 @@ public abstract class Units {
 
     public Units(){
     }
+
+    public void damage(int damage){
+        currentLife -= damage;
+        if (currentLife < 0)
+            currentLife = 0;
+    }
+    public void draw(SpriteBatch batch){
+        try {
+            if (lastWayPoint == nbWayPoints){
+                System.out.println(lastWayPoint+" "+nbWayPoints);
+
+            }else
+            {
+                Point lastOne = wayPoints.get(this.lastWayPoint);
+                Point nextOne = wayPoints.get(this.lastWayPoint + 1);
+                //DEBUG
+                System.out.println(lastOne+" "+nextOne);
+                System.out.println(lastWayPoint);
+                System.out.println(this.getCoordonees());
+
+                if ((this.getCoordonees().getX() == nextOne.getX()*40)&&(this.getCoordonees().getY() == nextOne.getY()*40)){//PROBLEME
+                    lastWayPoint++;
+                    System.out.println(lastWayPoint);
+                }
+                else if (lastOne.getY()==nextOne.getY())
+                {
+                    //deplacement horizontal
+                    if (lastOne.getX() < nextOne.getX())
+                    {
+                        //deplacement droite
+                        this.setCoordonees(new Point((int)this.getCoordonees().getX()+1, (int) this.getCoordonees().getY()));
+
+                    }else
+                    {
+                        //deplacement gauche
+                        this.setCoordonees(new Point((int)this.getCoordonees().getX()-1, (int) this.getCoordonees().getY()));
+                    }
+                }else
+                {
+                    //deplacement vertical
+                    if (nextOne.getY() < lastOne.getY())
+                    {
+                        //deplacement haut
+                        this.setCoordonees(new Point((int) this.getCoordonees().getX(), (int)this.getCoordonees().getY()-1));
+
+                    }else
+                    {
+                        //deplacement bas
+                        this.setCoordonees(new Point((int) this.getCoordonees().getX(), (int)this.getCoordonees().getY()+1));
+                    }
+                }
+            }
+            batch.draw(texture,(int)coordonees.getY(),(int)coordonees.getX());
+        } catch (java.lang.IndexOutOfBoundsException e) {
+            //
+        }
+    }
+
 
     public int getLife() {
         return life;
@@ -45,12 +110,20 @@ public abstract class Units {
         this.speed = speed;
     }
 
-    public int[] getPosition() {
-        return position;
+    public Point getCoordonees() {
+        return coordonees;
     }
 
-    public void setPosition(int[] position) {
-        this.position = position;
+    public void setCoordonees(Point coordonees) {
+        this.coordonees = coordonees;
+    }
+
+    public int getLastWayPoint() {
+        return lastWayPoint;
+    }
+
+    public void setLastWayPoint(int lastWayPoint) {
+        this.lastWayPoint = lastWayPoint;
     }
 
     public int getCurrentLife() {
@@ -61,10 +134,24 @@ public abstract class Units {
         this.currentLife = currentLife;
     }
 
-    public void damage(int damage){
-        currentLife -= damage;
-        if (currentLife < 0)
-            currentLife = 0;
+    public ArrayList<Point> getWayPoints() {
+        return wayPoints;
     }
+
+    public void setWayPoints(ArrayList<Point> wayPoints) {
+        this.wayPoints = wayPoints;
+    }
+
+    public int getNbWayPoints() {
+        return nbWayPoints;
+    }
+
+    public void setNbWayPoints(int nbWayPoints) {
+        this.nbWayPoints = nbWayPoints;
+    }
+
+
+
+
 
 }

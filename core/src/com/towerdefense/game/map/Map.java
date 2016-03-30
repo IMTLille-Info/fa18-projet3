@@ -19,17 +19,18 @@ public class Map {
 
     private char map[][];
 
-
-    private List<Point> wayPoints;
+    private ArrayList<Point> wayPoints;
 
     private int width, height;
+
+    private int nbWayPoint;
     Texture blanc;
     Texture vert;
     Texture orangeTower;
     Texture redTower;
     Texture yellowTower;
     Texture menu;
-    int resolution = 40;
+    final int resolution = 40;
 
     public Map(){
 
@@ -74,7 +75,7 @@ public class Map {
         orangeTower = new Texture("tour orange 3.jpg");
         redTower    = new Texture("tour rouge 3.jpg");
         yellowTower = new Texture("tour jaune 3.jpg");
-        menu        = new Texture("test.jpg");
+        menu        = new Texture("backgroundMenu.jpg");
 
         //Sprite sprite = new Sprite();
     }
@@ -121,8 +122,9 @@ public class Map {
             }
             batch.draw(menu, width, 0);
         }
+       // Affichage des waypoints pour Debug
         for (Point p : wayPoints){
-            batch.draw(new Texture("monster.jpg"),(int)p.getY()*40,560-(int)p.getX()*40 );
+            batch.draw(new Texture("monster.jpg"),(int)p.getY()*40,(int)p.getX()*40 );
         }
     }
 
@@ -151,34 +153,35 @@ public class Map {
                 case 'U':
                     i--;
                     if ((map[i][j] == 'R')||(map[i][j] == 'L')||(map[i][j]=='E')){
-                        wayPoints.add(new Point(i,j));
+                        wayPoints.add(new Point(14-i,j));
                         lastDirection = map[i][j];
                     }
                     break;
                 case 'D':
                     i++;
                     if ((map[i][j] == 'R')||(map[i][j] == 'L')||(map[i][j]=='E')){
-                        wayPoints.add(new Point(i,j));
+                        wayPoints.add(new Point(14-i,j));
                         lastDirection = map[i][j];
                     }
                     break;
                 case 'R':
                     j++;
                     if ((map[i][j] == 'U')||(map[i][j] == 'D')||(map[i][j]=='E')){
-                        wayPoints.add(new Point(i,j));
+                        wayPoints.add(new Point(14-i,j));
                         lastDirection = map[i][j];
                     }
                     break;
                 case 'L':
                     j--;
                     if ((map[i][j] == 'U')||(map[i][j] == 'D')||(map[i][j]=='E')){
-                        wayPoints.add(new Point(i,j));
+                        wayPoints.add(new Point(14-i,j));
                         lastDirection = map[i][j];
                     }
                     break;
             }
         }
-        //affichage des waypoints
+        nbWayPoint = wayPoints.size();
+        //affichage des waypoints en texte
         /*for (Point p : wayPoints){
             System.out.println("x = "+p.getX()*40+" y = "+p.getY()*40);
         }*/
@@ -200,4 +203,23 @@ public class Map {
     public void setHeight(int height) {
         this.height = height;
     }
+
+    public int getNbWayPoint() {
+        return nbWayPoint;
+    }
+
+    public void setNbWayPoint(int nbWayPoint) {
+        this.nbWayPoint = nbWayPoint;
+    }
+
+
+    public ArrayList<Point> getWayPoints() {
+        return wayPoints;
+    }
+
+    public void setWayPoints(ArrayList<Point> wayPoints) {
+        this.wayPoints = wayPoints;
+    }
+
+
 }
