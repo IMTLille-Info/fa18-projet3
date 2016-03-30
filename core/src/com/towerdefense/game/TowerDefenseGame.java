@@ -12,9 +12,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.towerdefense.game.Unit.BasicUnit;
 import com.towerdefense.game.map.Map;
+import com.towerdefense.game.tower.Tower;
 import com.towerdefense.game.tower.TowerBasic;
 
 import java.awt.*;
+import java.util.*;
 
 
 public class TowerDefenseGame implements ApplicationListener {
@@ -23,6 +25,7 @@ public class TowerDefenseGame implements ApplicationListener {
 
     private Texture texture;
     private Sprite skin;
+    private int nbUnit = 0;
     private Map map;
     private char menuChoice;
     private boolean menuTouched = false;
@@ -61,8 +64,8 @@ public class TowerDefenseGame implements ApplicationListener {
         //sprite = new Sprite();
 
 
-        basicTower = new TowerBasic(10, 10, 40, 40);
-        basicUnit = new BasicUnit(start,10,map.getWayPoints(),map.getNbWayPoint());
+        //basicTower = new TowerBasic(10, 10, 40, 40);
+        map.addUnit(new BasicUnit(start,10,map.getWayPoints(),map.getNbWayPoint()));
 
         movingSheet = new Texture(Gdx.files.internal("MulticolorTanks.png"));
         TextureRegion[][] tmp = TextureRegion.split(movingSheet, movingSheet.getWidth()/FRAME_COLS, movingSheet.getHeight()/FRAME_ROWS);
@@ -101,11 +104,11 @@ public class TowerDefenseGame implements ApplicationListener {
             public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                 if ((screenX < 20*40)&&(screenY<15*40)) {
                     if (menuTouched && map.isFreeSpace(screenY / 40, screenX / 40)){
-                        map.placeTower(menuChoice,screenY / 40, screenX / 40);
+                        map.addTower(new TowerBasic(10,150,screenY/40,screenX/40,menuChoice));
                         menuTouched = false;
                     }
-                    System.out.print("x: " + screenX / 40 + " y: " + screenY / 40 + " ");
-                    System.out.println(map.isFreeSpace(screenY / 40, screenX / 40));
+                    //System.out.print("x: " + screenX / 40 + " y: " + screenY / 40 + " ");
+                    //System.out.println(map.isFreeSpace(screenY / 40, screenX / 40));
                     //Sprite skin = new Sprite(new Texture("tour rouge 3.jpg"));
                 }
 
@@ -170,9 +173,12 @@ public class TowerDefenseGame implements ApplicationListener {
 
 
         //batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
+
         map.draw(batch);
+
         menu.draw(batch);
-        basicUnit.draw(batch);
+
+        //basicUnit.draw(batch,map);
 
 
 
@@ -187,8 +193,13 @@ public class TowerDefenseGame implements ApplicationListener {
             Gdx.app.exit();
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-            basicUnit.damage(1);
-            System.out.println(basicUnit.getLife());
+            map.addUnit(new BasicUnit(start,10,map.getWayPoints(),map.getNbWayPoint()));
+        }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.R)){
+            synchronized (map) {
+               // map.reset();
+            }
+
         }
 
     }

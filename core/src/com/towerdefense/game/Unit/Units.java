@@ -41,23 +41,23 @@ public abstract class Units {
         if (currentLife < 0)
             currentLife = 0;
     }
-    public void draw(SpriteBatch batch){
+    public void draw(SpriteBatch batch,Map map){
         try {
             if (lastWayPoint == nbWayPoints){
-                System.out.println(lastWayPoint+" "+nbWayPoints);
-
+                //System.out.println(lastWayPoint+" "+nbWayPoints);
+                map.removeUnit(this);
             }else
             {
                 Point lastOne = wayPoints.get(this.lastWayPoint);
                 Point nextOne = wayPoints.get(this.lastWayPoint + 1);
                 //DEBUG
-                System.out.println(lastOne+" "+nextOne);
-                System.out.println(lastWayPoint);
-                System.out.println(this.getCoordonees());
+                //System.out.println(lastOne+" "+nextOne);
+                //System.out.println(lastWayPoint);
+                //System.out.println(this.getCoordonees());
 
                 if ((this.getCoordonees().getX() == nextOne.getX()*40)&&(this.getCoordonees().getY() == nextOne.getY()*40)){//PROBLEME
                     lastWayPoint++;
-                    System.out.println(lastWayPoint);
+                    //System.out.println(lastWayPoint);
                 }
                 else if (lastOne.getY()==nextOne.getY())
                 {

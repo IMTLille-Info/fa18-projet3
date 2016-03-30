@@ -1,5 +1,7 @@
 package com.towerdefense.game.tower;
 
+import java.awt.*;
+
 /**
  * Created by Yonni on 10/03/2016.
  * abstract class for the towers
@@ -7,8 +9,8 @@ package com.towerdefense.game.tower;
 public abstract class Tower {
     private float range;
     private float damage;
-    private int position[];
-
+    private Point position;
+    private char type;
     public Tower(){
     }
 
@@ -24,15 +26,23 @@ public abstract class Tower {
         this.damage = damage;
     }
 
-    public int[] getPosition() {
+    public Point getPosition() {
         return position;
     }
 
-    public void setPosition(int[] position) {
+    public void setPosition(Point position) {
         this.position = position;
     }
 
     public void setRange(float range) {
         this.range = range;
+    }
+
+    public char getType() {
+        return type;
+    }
+
+    public void setType(char type) {
+        this.type = type;
     }
 }

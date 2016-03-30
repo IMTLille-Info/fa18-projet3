@@ -33,13 +33,13 @@ public class BuyTower{
     public void initialiseButtons(){
         buttons = new ArrayList<Sprite>();
 
-        red = new Sprite(new Texture("tour rouge 3.jpg"));
+        red = new Sprite(new Texture("tour rouge 3 FB.jpg"));
         red.setPosition(820,520);
 
-        yellow = new Sprite(new Texture("tour jaune 3.jpg"));
+        yellow = new Sprite(new Texture("tour jaune 3 FB.jpg"));
         yellow.setPosition(820,360);
 
-        orange = new Sprite(new Texture("tour orange 3.jpg"));
+        orange = new Sprite(new Texture("tour orange 3 FB.jpg"));
         orange.setPosition(820,440);
 
         buttons.add(yellow);

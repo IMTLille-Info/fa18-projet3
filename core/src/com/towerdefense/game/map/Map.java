@@ -7,8 +7,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.sun.corba.se.impl.util.SUNVMCID;
 import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+import com.towerdefense.game.Unit.Units;
+import com.towerdefense.game.tower.Tower;
+import com.towerdefense.game.tower.TowerBasic;
+import sun.tools.jconsole.Plotter;
+
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.awt.Point;
 
@@ -20,6 +26,8 @@ public class Map {
     private char map[][];
 
     private ArrayList<Point> wayPoints;
+    private ArrayList<Tower> towers;
+    private ArrayList<Units> units;
 
     private int width, height;
 
@@ -47,27 +55,29 @@ public class Map {
         map = new char[][]{
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
-                {'x','R','c','c','c','D','x','x','x','R','c','c','c','D','x','x','x','x','x','x'},
-                {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
-                {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
-                {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
-                {'x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
-                {'S','U','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','R','c','E'},
-                {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
-                {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
-                {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
-                {'x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
-                {'x','x','x','x','x','R','c','c','c','U','x','x','x','R','c','c','c','U','x','x'},
-                {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
+                {'x','R','c','D','x','x','x','x','x','R','c','c','c','D','x','x','x','x','x','x'},
+                {'x','c','x','c','x','x','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
+                {'x','c','x','c','x','x','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
+                {'x','c','x','c','x','x','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
+                {'x','c','x','c','x','x','x','x','x','c','x','x','x','c','x','x','x','x','x','x'},
+                {'S','U','x','c','x','x','x','x','x','c','x','x','x','c','x','x','x','R','c','E'},
+                {'x','x','x','c','x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
+                {'x','x','x','c','x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
+                {'x','D','c','L','x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
+                {'x','c','x','x','x','x','x','x','x','c','x','x','x','c','x','x','x','c','x','x'},
+                {'x','c','x','x','x','R','c','c','c','U','x','x','x','R','c','c','c','U','x','x'},
+                {'x','R','c','c','c','U','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
                 {'x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x','x'},
         };
         width       = 20 * resolution;
         height      = 15 * resolution;
         //System.out.println(map[7][1]);
 
-        wayPoints = new ArrayList<Point>();
-        initWaypoint();
+        wayPoints   = new ArrayList<Point>();
+        units       = new ArrayList<Units>();
+        towers      = new ArrayList<Tower>();
 
+        initWaypoint();
 
         //Texture init
         blanc       = new Texture("blanc.jpg");
@@ -87,6 +97,8 @@ public class Map {
     }
     public void placeTower(char tower,int i, int j){
         map[i][j] = tower;
+        towers.add(new TowerBasic(10,150,i,j,'o') {
+        });
 
     }
 
@@ -107,24 +119,41 @@ public class Map {
                 if (map[i][j] == 'x') {
                     batch.draw(vert, scaledWidth, scaledHeight, width / 20, height / 15);
 
-                } else if (map[i][j] == 'o') {
-                    batch.draw(orangeTower, scaledWidth, scaledHeight, width / 20, height / 15);
-
-                } else if (map[i][j] == 'y') {
-                    batch.draw(yellowTower, scaledWidth, scaledHeight, width / 20, height / 15);
-
-                } else if (map[i][j] == 'r') {
-                    batch.draw(redTower, scaledWidth, scaledHeight, width / 20, height / 15);
-
-                } else {
+                }else {
                     batch.draw(blanc, scaledWidth, scaledHeight, width / 20, height / 15);
                 }
             }
             batch.draw(menu, width, 0);
         }
        // Affichage des waypoints pour Debug
-        for (Point p : wayPoints){
-            batch.draw(new Texture("monster.jpg"),(int)p.getY()*40,(int)p.getX()*40 );
+
+        //for (Point p : wayPoints){
+        //    batch.draw(new Texture("monster.jpg"),(int)p.getY()*40,(int)p.getX()*40 );
+        //}
+        //Affichage des tours
+
+        //try
+
+        //endtry
+        synchronized (towers) {
+            towers.toArray().toString();
+
+            for (Tower t : towers) {
+                switch (t.getType()) {
+                    case 'o':
+                        batch.draw(orangeTower, (int) t.getPosition().getY() * 40, 560 - (int) t.getPosition().getX() * 40, width / 20, height / 15);
+                        break;
+                    case 'r':
+                        batch.draw(redTower, (int) t.getPosition().getY() * 40, 560 - (int) t.getPosition().getX() * 40, width / 20, height / 15);
+                        break;
+                    case 'y':
+                        batch.draw(yellowTower, (int) t.getPosition().getY() * 40, 560 - (int) t.getPosition().getX() * 40, width / 20, height / 15);
+                        break;
+                }
+            }
+        }
+        for (Units u : units){
+            u.draw(batch,this);
         }
     }
 
@@ -181,10 +210,23 @@ public class Map {
             }
         }
         nbWayPoint = wayPoints.size();
+
         //affichage des waypoints en texte
         /*for (Point p : wayPoints){
             System.out.println("x = "+p.getX()*40+" y = "+p.getY()*40);
         }*/
+    }
+
+    public void addUnit(Units unit){
+        units.add(unit);
+    }
+
+    public void removeUnit(Units unit){
+        units.remove(unit);
+    }
+
+    public void addTower(Tower tower) {
+        towers.add(tower);
     }
 
 
@@ -221,5 +263,20 @@ public class Map {
         this.wayPoints = wayPoints;
     }
 
+    public ArrayList<Tower> getTowers() {
+        return towers;
+    }
+
+    public void setTowers(ArrayList<Tower> towers) {
+        this.towers = towers;
+    }
+
+    public ArrayList<Units> getUnits() {
+        return units;
+    }
+
+    public void setUnits(ArrayList<Units> units) {
+        this.units = units;
+    }
 
 }
