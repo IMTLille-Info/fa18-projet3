@@ -30,9 +30,10 @@ public class TowerDefenseGame implements ApplicationListener {
     private char menuChoice;
     private boolean menuTouched = false;
     private Point start;
+    private int vie;
+    private int gold;
 
     private BuyTower menu;
-
 
     private static final int FRAME_COLS = 8;
     private static final int FRAME_ROWS = 1 ;
@@ -167,26 +168,10 @@ public class TowerDefenseGame implements ApplicationListener {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT);
         stateTime += Gdx.graphics.getDeltaTime();
         currentFrame = movingAnimation.getKeyFrame(stateTime, true);
-
-        //sprite.setSize(width,height);
-       //sprite.draw(batch);
-
-
-        //batch.draw(getTexture(), getPosition()[0], getPosition()[1]);
-
         map.draw(batch);
-
         menu.draw(batch);
-
-        //basicUnit.draw(batch,map);
-
-
-
         //batch.draw(currentFrame, 2, 280);
 
-        // basicTower.draw(batch);
-       //basicUnit.draw(batch);
-        //batch.end();
         batch.end();
 
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE)){

@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Yonni on 26/03/2016.
  */
 public class BuyTower{
-    SpriteBatch batch;
+
     private List<Sprite> buttons;
 
     Sprite red,orange,yellow;
@@ -21,11 +21,9 @@ public class BuyTower{
     }
 
     public void draw(SpriteBatch batch){
-        //batch.begin();
         for(Sprite button : buttons){
             batch.draw(button.getTexture(),button.getX(),button.getY(),40,40);
         }
-        //batch.end();
     }
 
 

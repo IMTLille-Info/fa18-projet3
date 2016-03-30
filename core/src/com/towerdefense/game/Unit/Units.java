@@ -1,7 +1,6 @@
 package com.towerdefense.game.Unit;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.towerdefense.game.map.Map;
 

@@ -11,6 +11,8 @@ public abstract class Tower {
     private float damage;
     private Point position;
     private char type;
+    private int price;
+
     public Tower(){
     }
 
@@ -40,6 +42,14 @@ public abstract class Tower {
 
     public char getType() {
         return type;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public void setType(char type) {

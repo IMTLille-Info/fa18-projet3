@@ -1,25 +1,18 @@
 package com.towerdefense.game.map;
 
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.Texture;
-import com.sun.corba.se.impl.util.SUNVMCID;
-import com.sun.tools.internal.ws.wsdl.document.soap.SOAPUse;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 import com.towerdefense.game.Unit.Units;
 import com.towerdefense.game.tower.Tower;
 import com.towerdefense.game.tower.TowerBasic;
-import sun.tools.jconsole.Plotter;
 
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import java.awt.Point;
 
 /**
- * Created by Yonni  on 21/03/2016.
+ * Created by Yonni  on 21/03/2016 wsh alors.
  */
 public class Map {
 
@@ -91,9 +84,7 @@ public class Map {
     }
 
     public boolean isFreeSpace(int i, int j){
-        if (map[i][j] == 'x')
-            return true;
-        return false;
+        return map[i][j] == 'x';
     }
     public void placeTower(char tower,int i, int j){
         map[i][j] = tower;
@@ -136,8 +127,6 @@ public class Map {
 
         //endtry
         synchronized (towers) {
-            towers.toArray().toString();
-
             for (Tower t : towers) {
                 switch (t.getType()) {
                     case 'o':
